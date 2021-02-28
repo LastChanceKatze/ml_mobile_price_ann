@@ -19,7 +19,7 @@ def plot_boxplot(data):
                                       title='Box Plot for each input variable')
     plt.subplots_adjust(wspace=0.5)
     plt.savefig('./graphs/features_box_plot.jpg')
-    plt.show()
+   # plt.show()
 
 def plot_barplots(data):
     num_rows = 4
@@ -34,27 +34,27 @@ def plot_barplots(data):
             sns.barplot(x='price_range', y=col_name, data=data, ax=axs[i][j])
 
     plt.savefig("./graphs/bar_plot.jpg")
-    plt.show()
+    #plt.show()
 
 def plot_histogram(data, data_column):
     plt.figure(figsize=(7, 4))
     data[data_column].plot(kind='hist', figsize=(4, 4))
     # sns.histplot(data_column, kde=True)
     plt.savefig("./graphs/" + data_column + "_histogram.jpg")
-    plt.show()
+   # plt.show()
 
 def plot_count(data, data_column):
     plt.figure(figsize=(7, 4))
     sns.countplot(x=data_column, data=data)
     plt.savefig("./graphs/" + data_column + "_countplot.jpg")
-    plt.show()
+   # plt.show()
 
 def correlation_matrix(data):
     corr = data.corr()
     fig, ax = plt.subplots(figsize=(20, 20))
     sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, annot=True, ax=ax)
     plt.savefig("./graphs/correlation_matrix.png")
-    plt.show()
+    #plt.show()
 
     corr = abs(corr['price_range']).sort_values(ascending=False)
     return corr
@@ -74,5 +74,14 @@ def describe_data(data):
     print("Print median: \n" + str(data.median()))
     print("----------------------------------------------------------")
 
-data = pp.import_data()
-describe_data(data)
+def generate_graphs():
+
+    data = pp.preprocess_data_for_desc_stat()
+    plot_density_graph(data)
+    plot_boxplot(data)
+    plot_barplots(data)
+    plot_histogram(data=data, data_column='price_range')
+    plot_count(data=data, data_column='price_range')
+    correlation_matrix(data)
+
+generate_graphs()

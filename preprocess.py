@@ -70,6 +70,14 @@ def preprocess_data(scale=True):
     return x_train, x_test, y_train, y_test
 
 
+def preprocess_data_for_desc_stat():
+
+    data = import_data()
+    data = replace_zero_vales_with_median(data)
+
+    return data
+
+
 
 
 """
