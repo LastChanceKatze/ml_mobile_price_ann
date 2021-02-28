@@ -1,4 +1,4 @@
-import pandas as pd
+import preprocess as pp
 
-data = pd.read_csv("dataset/train.csv")
-print(data.head(3))
+x_train, x_test, y_train, y_test = pp.preprocess_data()
+
