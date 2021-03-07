@@ -24,7 +24,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 history = model.fit(x=x_train, y=y_train, epochs=200, batch_size=64, verbose=1,
                     validation_data=(x_test, y_test))
 
-vs.plot_acc_history(history.history)
+vs.plot_history(history.history)
 
 # evaluate model
 preds = model.evaluate(x=x_test, y=y_test, return_dict=True)

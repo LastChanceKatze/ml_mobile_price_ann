@@ -25,8 +25,7 @@ def fit(x_train, y_train, x_test, y_test, callback):
                                                        save_best_only=True)],
                         validation_data=(x_test, y_test))
 
-    vs.plot_acc_history(history.history)
-    vs.plot_loss_history(history.history)
+    vs.plot_history(history.history)
 
 
 def evaluate(model, x_test, y_test):
@@ -91,8 +90,7 @@ model = create_network('rmsprop')
 #                     callbacks=[es],
 #                     validation_data=(x_test, y_test))
 #
-# vs.plot_acc_history(history.history)
-# vs.plot_loss_history(history.history)
+# vs.plot_history(history.history)
 #
 # # evaluate model
 # preds = model.evaluate(x=x_test, y=y_test, return_dict=True)
