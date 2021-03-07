@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from tensorflow.keras.utils import plot_model
 
 
 def plot_acc_history(history):
@@ -22,3 +23,6 @@ def plot_loss_history(history):
     plt.legend(['Train', 'Test'], loc='best')
     plt.show()
 
+# TODO: visualize network model
+def plot_nn(model, filename):
+    plot_model(model, show_shapes=True, to_file=filename)
